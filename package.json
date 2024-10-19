@@ -1,10 +1,13 @@
 {
+  "homepage": "https://it2konst.github.io/vue-cocktails",
   "name": "vue-cocktails",
   "version": "0.0.0",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "build": "vite build",
     "preview": "vite preview"
   },

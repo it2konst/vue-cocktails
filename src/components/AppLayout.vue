@@ -47,6 +47,5 @@ const props = defineProps({
     color: $text
 
     &:hover, &:active
-        background-color: $accent-dark
-        background-color: $accent-dark
+        background-color: darken($accent, 10%)
 </style>
