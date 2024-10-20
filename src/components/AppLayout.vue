@@ -18,7 +18,7 @@ const props = defineProps({
 </template>
 
 <style lang="sass" scoped>
-@import '../assets/styles/main.sass'
+@import './../assets/styles/main.sass'
 
 .root
     display: flex

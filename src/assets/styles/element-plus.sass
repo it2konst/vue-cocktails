@@ -1,10 +1,11 @@
 .select
-    border-color: $accent
     .el-select__wrapper
         background-color: $background
         box-shadow: 0 0 0 1px lighten($background, 30%) inset
-    .el-select__selected-item
-        color: $text
+        &.is-focused
+            box-shadow: 0 0 0 1px $accent inset
+        .el-select__selected-item
+            color: $text
 
 .el-select-dropdown
     background-color: $background
@@ -12,3 +13,5 @@
         color: $text
     .el-select-dropdown__item:hover
         background-color: lighten($background, 20%)
+    // .el-select-dropdown__item:not(:focus)
+    //     background-color: $background
