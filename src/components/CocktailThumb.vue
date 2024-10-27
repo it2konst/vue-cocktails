@@ -43,4 +43,5 @@ const props = defineProps({
     white-space: nowrap
     overflow: hidden
     text-overflow: ellipsis
+    margin: 0 auto
 </style>
