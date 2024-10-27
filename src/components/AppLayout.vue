@@ -1,5 +1,8 @@
 <script setup>
+import { computed } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import { Back } from "@element-plus/icons-vue";
+import { ROUTES_PATCH } from "../constants/router";
 
 const props = defineProps({
     imgUrl: {
@@ -8,13 +11,34 @@ const props = defineProps({
     },
     backFunc: {
         type: Function,
-        required: true,
     },
     isBackButtonVisible: {
         type: Boolean,
         default: true,
     },
 });
+
+const router = useRouter();
+const route = useRoute();
+
+const routeName = computed(() => {
+    return route.name;
+});
+
+function goForCocktailRandom() {
+    router.push(ROUTES_PATCH.COCKTAIL_RANDOM);
+    if (routeName.value === ROUTES_PATCH.COCKTAIL_RANDOM) {
+        router.go(0);
+    }
+}
+
+function goBack() {
+    if (props.backFunc) {
+        props.backFunc();
+    } else {
+        router.go(-1);
+    }
+}
 </script>
 
 <template>
@@ -22,8 +46,8 @@ const props = defineProps({
         <div :style="{ backgroundImage: `url(${props.imgUrl})` }" class="img"></div>
         <div class="main">
             <div class="buttons">
-                <el-button class="back" v-if="props.isBackButtonVisible" type="primary" :icon="Back" circle @click="props.backFunc()" />
-                <el-button class="btn">Get random cocktail</el-button>
+                <el-button class="back" v-if="props.isBackButtonVisible" type="primary" :icon="Back" circle @click="goBack" />
+                <el-button class="btn" @click="goForCocktailRandom">Get random cocktail</el-button>
             </div>
             <slot></slot>
         </div>
